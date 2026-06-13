@@ -1,0 +1,95 @@
+# Configuración de Pages CMS (https://pagescms.org) — editor visual para SuperPadLand.
+# Entra en https://app.pagescms.org con tu cuenta de GitHub para usarlo.
+
+media:
+  input: static/img
+  output: /img
+  extensions: [png, jpg, jpeg, gif, webp, svg]
+
+content:
+  - name: posts
+    label: Entradas
+    type: collection
+    path: content/posts
+    filename: '{fields.title}.md'
+    view:
+      primary: title
+      fields: [title, consolas, date]
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Título
+        type: string
+        required: true
+        description: 'Ej: "Top 100 Xbox". El nombre del fichero se genera solo a partir de aquí.'
+
+      - name: date
+        label: Fecha de publicación
+        type: date
+        required: true
+        options:
+          format: yyyy-MM-dd
+
+      - name: categories
+        label: Categoría
+        type: select
+        default: [Rankings]
+        options:
+          multiple: true
+          values: [Rankings, Artículos, Noticias]
+
+      - name: consolas
+        label: Consola
+        type: select
+        options:
+          multiple: true
+          values:
+            - NES
+            - Master System
+            - PC Engine
+            - Mega Drive
+            - Game Boy
+            - Super Nintendo
+            - 3DO
+            - Atari Jaguar
+            - Saturn
+            - PlayStation
+            - Nintendo 64
+            - Dreamcast
+            - GameCube
+            - Wii U
+            - Xbox
+            - PlayStation 2
+            - Game Boy Advance
+            - Nintendo DS
+            - PSP
+            - Game Gear
+            - Neo Geo
+
+      - name: cover
+        label: Portada
+        type: object
+        fields:
+          - name: image
+            label: Imagen de portada
+            type: image
+          - name: alt
+            label: Texto alternativo (para accesibilidad)
+            type: string
+          - name: relative
+            type: boolean
+            default: false
+            hidden: true
+
+      - name: tags
+        label: Etiquetas
+        type: string
+        list: true
+        description: 'Opcional. Palabras clave, ej: clásicos, rpg, mejores juegos.'
+
+      - name: body
+        label: Contenido
+        type: rich-text
