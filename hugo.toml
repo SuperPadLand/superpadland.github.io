@@ -48,9 +48,9 @@ canonifyURLs = true
   url = "/consolas/"
   weight = 10
 [[menu.main]]
-  identifier = "rankings"
-  name = "Rankings"
-  url = "/categories/rankings/"
+  identifier = "blog"
+  name = "Blog"
+  url = "/blog/"
   weight = 20
 [[menu.main]]
   identifier = "articulos"
@@ -73,6 +73,7 @@ canonifyURLs = true
   env = "production"
   description = "Los mejores rankings de juegos de cada consola retro, probados en hardware real."
   author = "SuperPadLand"
+  mainSections = ["posts"]
   defaultTheme = "dark"
   ShowReadingTime = true
   ShowShareButtons = false
