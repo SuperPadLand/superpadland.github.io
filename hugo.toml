@@ -93,6 +93,11 @@ canonifyURLs = true
 
   [params.assets]
     disableHLJS = true
+    favicon = "/favicon.ico"
+    favicon16x16 = "/favicon-16.png"
+    favicon32x32 = "/favicon-32.png"
+    apple_touch_icon = "/apple-touch-icon.png"
+    safari_pinned_tab = "/favicon.svg"
 
   # Buscador (Fuse.js, integrado en PaperMod)
   [params.fuseOpts]
