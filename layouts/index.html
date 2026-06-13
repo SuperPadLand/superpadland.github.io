@@ -1,0 +1,40 @@
+{{- define "main" }}
+
+<section class="home-hero">
+  <h1>SuperPadLand <span aria-hidden="true">🕹️</span></h1>
+  <p>Rankings y análisis de los mejores juegos de cada consola retro, probados uno a uno en
+     hardware real. Elige tu máquina y descubre lo mejor de su catálogo.</p>
+</section>
+
+<h2 class="home-section-title">Explora por consola</h2>
+<nav class="consola-grid">
+  {{- range .Site.Taxonomies.consolas.ByCount }}
+    {{- $img := "" }}
+    {{- range .Pages }}{{ if and (not $img) .Params.cover.image }}{{ $img = .Params.cover.image }}{{ end }}{{ end }}
+    <a class="consola-card" href="{{ .Page.RelPermalink }}">
+      <div class="consola-card-img"{{ with $img }} style="background-image:url('{{ . }}')"{{ end }}></div>
+      <div class="consola-card-body">
+        <span class="consola-card-name">{{ .Name }}</span>
+        <span class="consola-card-count">{{ .Count }} {{ cond (eq .Count 1) "lista" "listas" }}</span>
+      </div>
+    </a>
+  {{- end }}
+</nav>
+
+<h2 class="home-section-title">Lo último</h2>
+<div class="home-latest">
+  {{- $latest := first 6 (where site.RegularPages "Section" "posts") }}
+  {{- range $latest }}
+  <article class="latest-entry">
+    <a href="{{ .RelPermalink }}">
+      <h3>{{ .Title }}</h3>
+      <div class="latest-meta">
+        {{- with .Params.consolas }}<span class="latest-tag">{{ index . 0 }}</span>{{ end }}
+        <time>{{ .Date.Format "2 Jan 2006" }}</time>
+      </div>
+    </a>
+  </article>
+  {{- end }}
+</div>
+
+{{- end }}

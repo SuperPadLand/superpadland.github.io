@@ -1,0 +1,104 @@
+baseURL = "https://superpadland.github.io/"
+locale = "es-es"
+defaultContentLanguage = "es"
+title = "SuperPadLand"
+theme = "PaperMod"
+
+enableRobotsTXT = true
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+enableEmoji = true
+
+# Reescribe rutas relativas a la raíz (/img/...) anteponiendo el baseURL.
+# Hace que las imágenes funcionen tanto en dominio propio como en subcarpeta.
+canonifyURLs = true
+
+[pagination]
+  pagerSize = 12
+
+[minify]
+  disableXML = true
+  minifyOutput = true
+
+# --- Taxonomías ------------------------------------------------------------
+[taxonomies]
+  consola = "consolas"
+  categoria = "categories"
+  tag = "tags"
+
+# --- Salidas (la home también en JSON para el buscador) --------------------
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+# Permite ficheros de contenido .html (las entradas migradas de WordPress son HTML).
+[security]
+  allowContent = ['.*']
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.highlight]
+    noClasses = false
+
+# --- Menú principal --------------------------------------------------------
+[[menu.main]]
+  identifier = "consolas"
+  name = "Consolas"
+  url = "/consolas/"
+  weight = 10
+[[menu.main]]
+  identifier = "rankings"
+  name = "Rankings"
+  url = "/categories/rankings/"
+  weight = 20
+[[menu.main]]
+  identifier = "articulos"
+  name = "Artículos"
+  url = "/categories/articulos/"
+  weight = 30
+[[menu.main]]
+  identifier = "buscar"
+  name = "Buscar"
+  url = "/search/"
+  weight = 40
+[[menu.main]]
+  identifier = "acerca"
+  name = "Acerca de"
+  url = "/acerca-de/"
+  weight = 50
+
+# --- Parámetros del tema PaperMod -----------------------------------------
+[params]
+  env = "production"
+  description = "Los mejores rankings de juegos de cada consola retro, probados en hardware real."
+  author = "SuperPadLand"
+  defaultTheme = "dark"
+  ShowReadingTime = true
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = false
+  ShowToc = true
+  TocOpen = false
+  ShowWordCount = false
+  hidemeta = false
+  disableThemeToggle = false
+  DateFormat = "2 de January de 2006"
+
+  [params.homeInfoParams]
+    Title = "SuperPadLand 🕹️"
+    Content = "Rankings y análisis de los mejores juegos de cada consola retro, probados uno a uno en hardware real. Elige tu máquina y descubre lo mejor de su catálogo."
+
+  [params.assets]
+    disableHLJS = true
+
+  # Buscador (Fuse.js, integrado en PaperMod)
+  [params.fuseOpts]
+    isCaseSensitive = false
+    shouldSort = true
+    location = 0
+    distance = 1000
+    threshold = 0.4
+    minMatchCharLength = 0
+    keys = ["title", "permalink", "summary", "content"]

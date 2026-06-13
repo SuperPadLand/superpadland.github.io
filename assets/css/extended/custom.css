@@ -1,0 +1,105 @@
+/* ---------- Home: hero ---------- */
+.home-hero {
+    text-align: center;
+    padding: 40px 0 28px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 28px;
+}
+.home-hero h1 {
+    font-size: 44px;
+    margin: 0 0 10px;
+    line-height: 1.1;
+}
+.home-hero p {
+    max-width: 620px;
+    margin: 0 auto;
+    color: var(--secondary);
+    font-size: 17px;
+}
+
+.home-section-title {
+    font-size: 22px;
+    margin: 34px 0 16px;
+}
+
+/* ---------- Home: cuadrícula de consolas ---------- */
+.consola-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 14px;
+}
+.consola-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--entry);
+    border: 1px solid var(--border);
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+.consola-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .25);
+}
+.consola-card-img {
+    height: 96px;
+    background-size: cover;
+    background-position: center;
+    background-color: var(--code-bg);
+    background-repeat: no-repeat;
+}
+.consola-card-body {
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.consola-card-name {
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--primary);
+}
+.consola-card-count {
+    font-size: 13px;
+    color: var(--secondary);
+}
+
+/* ---------- Home: últimas entradas ---------- */
+.home-latest {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 14px;
+}
+.latest-entry {
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    transition: transform .15s ease;
+}
+.latest-entry:hover { transform: translateY(-3px); }
+.latest-entry h3 {
+    margin: 0 0 8px;
+    font-size: 17px;
+    color: var(--primary);
+}
+.latest-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--secondary);
+}
+.latest-tag {
+    background: var(--tertiary);
+    color: var(--primary);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+/* ---------- Imágenes del contenido migrado ---------- */
+.post-content img {
+    border-radius: 4px;
+    margin: 6px auto;
+}
