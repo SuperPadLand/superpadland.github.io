@@ -7,17 +7,22 @@
 </section>
 
 <h2 class="home-section-title">Explora por consola</h2>
+{{- /* Orden cronológico por generación (de la más antigua a la más nueva) */}}
+{{- $orden := slice "NES" "Master System" "PC Engine" "Mega Drive" "Game Boy" "Super Nintendo" "3DO" "Atari Jaguar" "Saturn" "PlayStation" "Nintendo 64" "Dreamcast" "GameCube" "Wii U" }}
 <nav class="consola-grid">
-  {{- range .Site.Taxonomies.consolas.ByCount }}
-    {{- $img := "" }}
-    {{- range .Pages }}{{ if and (not $img) .Params.cover.image }}{{ $img = .Params.cover.image }}{{ end }}{{ end }}
-    <a class="consola-card" href="{{ .Page.RelPermalink }}">
-      <div class="consola-card-img"{{ with $img }} style="background-image:url('{{ . }}')"{{ end }}></div>
-      <div class="consola-card-body">
-        <span class="consola-card-name">{{ .Name }}</span>
-        <span class="consola-card-count">{{ .Count }} {{ cond (eq .Count 1) "lista" "listas" }}</span>
-      </div>
-    </a>
+  {{- range $name := $orden }}
+    {{- with $.Site.GetPage (printf "/consolas/%s" (urlize $name)) }}
+      {{- $img := "" }}
+      {{- range .Pages }}{{ if and (not $img) .Params.cover.image }}{{ $img = .Params.cover.image }}{{ end }}{{ end }}
+      {{- $n := len .Pages }}
+      <a class="consola-card" href="{{ .RelPermalink }}">
+        <div class="consola-card-img"{{ with $img }} style="background-image:url('{{ . }}')"{{ end }}></div>
+        <div class="consola-card-body">
+          <span class="consola-card-name">{{ .Title }}</span>
+          <span class="consola-card-count">{{ $n }} {{ cond (eq $n 1) "lista" "listas" }}</span>
+        </div>
+      </a>
+    {{- end }}
   {{- end }}
 </nav>
 
