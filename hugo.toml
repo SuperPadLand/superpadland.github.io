@@ -91,6 +91,10 @@ canonifyURLs = true
     Title = "SuperPadLand 🕹️"
     Content = "Rankings y análisis de los mejores juegos de cada consola retro, probados uno a uno en hardware real. Elige tu máquina y descubre lo mejor de su catálogo."
 
+  # La portada solo en listados: dentro de la entrada el logo ya abre el texto
+  [params.cover]
+    hiddenInSingle = true
+
   [params.assets]
     disableHLJS = true
     favicon = "/favicon.ico"

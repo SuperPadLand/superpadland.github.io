@@ -8,7 +8,7 @@
 
 <h2 class="home-section-title">Explora por consola</h2>
 {{- /* Orden cronológico por generación (de la más antigua a la más nueva) */}}
-{{- $orden := slice "NES" "Master System" "PC Engine" "Mega Drive" "Game Boy" "Super Nintendo" "3DO" "Atari Jaguar" "Saturn" "PlayStation" "Nintendo 64" "Dreamcast" "GameCube" "Wii U" }}
+{{- $orden := slice "NES" "Master System" "PC Engine" "Mega Drive" "Game Boy" "Super Nintendo" "3DO" "Atari Jaguar" "Saturn" "PlayStation" "Nintendo 64" "Dreamcast" "GameCube" "Xbox" "Wii U" }}
 <nav class="consola-grid">
   {{- range $name := $orden }}
     {{- with $.Site.GetPage (printf "/consolas/%s" (urlize $name)) }}
@@ -35,7 +35,7 @@
       <h3>{{ .Title }}</h3>
       <div class="latest-meta">
         {{- with .Params.consolas }}<span class="latest-tag">{{ index . 0 }}</span>{{ end }}
-        <time>{{ .Date.Format "2 Jan 2006" }}</time>
+        <time>{{ .Date | time.Format ":date_medium" }}</time>
       </div>
     </a>
   </article>

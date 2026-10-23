@@ -20,6 +20,7 @@ RAW = os.path.join(ROOT, "_migration", "raw")
 # --- clasificación de consola a partir del título -------------------------
 CONSOLA_PAIRS = [
     ("gamecube", "GameCube"),
+    ("xbox", "Xbox"),
     ("dreamcast", "Dreamcast"),
     ("megadrive", "Mega Drive"), ("genesis", "Mega Drive"),
     ("saturn", "Saturn"),
