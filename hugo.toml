@@ -147,6 +147,10 @@ removePathAccents = true
   comments = true
   # La imagen al compartir en redes va en cada idioma (languages.*.params.images)
 
+  # Verificación de Google Search Console
+  [params.analytics.google]
+    SiteVerificationTag = "g0t5IgPL7uYtVTd2uJ3v69LyjrpTwrk2GgoPiGBLQaE"
+
   # La portada solo en listados: dentro de la entrada el logo ya abre el texto
   [params.cover]
     hiddenInSingle = true
