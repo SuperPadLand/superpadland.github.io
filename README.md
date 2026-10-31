@@ -51,14 +51,34 @@ A los 1-2 minutos los cambios están online.
 3. Debajo, escribe el contenido en HTML (o crea el fichero como `.md` para escribir en
    Markdown, más sencillo).
 4. Pon las imágenes en `static/img/top-xbox/` y enlázalas como `/img/top-xbox/loquesea.png`.
+5. En los tops, cada juego lleva su puesto y su nombre para que el buscador lo encuentre y
+   lleve directo a él (`/posts/top-xbox/#puesto-12`), y la captura lleva el nombre como `alt`:
 
-Las consolas nuevas aparecen solas en la página *Consolas* y en la home.
+   ```html
+   <p id="puesto-12" data-juego="Halo 2 (2004)"><strong>12. Halo 2 (2004)</strong></p>
+   <p><img alt="Halo 2 (2004)" src="/img/top-xbox/halo-2.png" width="300" height="225" loading="lazy"/>Reseña…</p>
+   <hr/>
+   ```
+
+Las consolas nuevas aparecen solas en la página *Consolas*; en la portada hay que añadirlas a
+la lista `$orden` de `layouts/index.html`, en su sitio por orden cronológico.
+
+Si cambias la dirección (`slug`) de una entrada ya publicada, añade la vieja en `aliases`
+para que los enlaces antiguos sigan funcionando.
+
+## Comentarios
+
+Cada entrada y la página de Contacto tienen comentarios con [giscus](https://giscus.app/):
+se guardan en las *Discussions* de este repositorio, un hilo por entrada. Para quitarlos de
+una página, pon `comments: false` en su front matter.
 
 ## Estructura
 
 - `content/` — las entradas y páginas (el texto).
-- `static/img/` — todas las imágenes (3228 portadas migradas).
-- `layouts/` — plantillas propias (la home con la cuadrícula de consolas).
+- `static/img/` — todas las imágenes.
+- `layouts/` — plantillas propias: la home con la cuadrícula de consolas, el índice del
+  buscador (`index.json`), los comentarios, la página 404 y el pie en castellano.
+- `assets/js/fastsearch.js` — el buscador (muestra en qué top y puesto está cada juego).
 - `assets/css/extended/custom.css` — estilos propios.
 - `themes/PaperMod/` — el tema base.
 - `hugo.toml` — la configuración del sitio (menú, taxonomías, etc.).

@@ -5,12 +5,12 @@ url: "/contacto/"
 ShowReadingTime: false
 ShowToc: false
 hidemeta: true
-comments: false
+comments: true
+comentariosTitulo: "Escríbeme"
 ---
 
-¿Quieres comentar un ranking, corregir un dato o sugerir un juego? Encantado de leerte.
+¿Quieres comentar un ranking, corregir un dato o sugerir un juego? Déjame un mensaje aquí abajo y te contesto en cuanto pueda.
 
-<!-- TODO: sustituye esto por tu correo o redes reales -->
-- **Correo:** `escribe-aquí-tu-email@ejemplo.com`
+Si es sobre un juego o un top concreto, también puedes comentar directamente al final de esa entrada.
 
-Respondo cuando el tiempo libre lo permite. ¡Gracias por pasarte! 🕹️
+¡Gracias por pasarte! 🕹️

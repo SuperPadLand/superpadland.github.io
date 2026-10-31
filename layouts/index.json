@@ -1,0 +1,17 @@
+{{- /* Índice del buscador: una ficha por entrada y, en los tops, una por juego con enlace a su puesto. */ -}}
+{{- $indice := slice -}}
+{{- range site.RegularPages -}}
+  {{- if and (not .Params.searchHidden) (ne .Layout "archives") (ne .Layout "search") -}}
+    {{- $p := . -}}
+    {{- $juegos := findRESubmatch `data-juego="([^"]*)"[^>]*\sid="puesto-(\d+)"` .Content -}}
+    {{- if $juegos -}}
+      {{- $indice = $indice | append (dict "title" .Title "permalink" .Permalink "summary" (printf "%d juegos" (len $juegos))) -}}
+      {{- range $juegos -}}
+        {{- $indice = $indice | append (dict "title" (index . 1 | htmlUnescape) "permalink" (printf "%s#puesto-%s" $p.Permalink (index . 2)) "summary" (printf "Puesto %s en el %s" (index . 2) $p.Title)) -}}
+      {{- end -}}
+    {{- else -}}
+      {{- $indice = $indice | append (dict "title" .Title "permalink" .Permalink "summary" (.Summary | plainify | htmlUnescape | truncate 140) "content" .Plain) -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- $indice | jsonify -}}

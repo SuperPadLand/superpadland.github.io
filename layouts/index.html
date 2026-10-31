@@ -16,7 +16,7 @@
       {{- range .Pages }}{{ if and (not $img) .Params.cover.image }}{{ $img = .Params.cover.image }}{{ end }}{{ end }}
       {{- $n := len .Pages }}
       <a class="consola-card" href="{{ .RelPermalink }}">
-        <div class="consola-card-img"{{ with $img }} style="background-image:url('{{ . }}')"{{ end }}></div>
+        <div class="consola-card-img"{{ with $img }} style="--logo:url('{{ . }}')"{{ end }}></div>
         <div class="consola-card-body">
           <span class="consola-card-name">{{ .Title }}</span>
           <span class="consola-card-count">{{ $n }} {{ cond (eq $n 1) "lista" "listas" }}</span>

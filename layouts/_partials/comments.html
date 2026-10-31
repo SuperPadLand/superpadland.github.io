@@ -1,0 +1,31 @@
+{{- /* Comentarios con giscus: se guardan en las Discusiones del repositorio, un hilo por entrada. */ -}}
+{{- with site.Params.giscus }}
+<section class="comentarios" aria-labelledby="comentarios-titulo">
+  <h2 id="comentarios-titulo">{{ $.Params.comentariosTitulo | default "Comentarios" }}</h2>
+  <p class="comentarios-nota">Para comentar hace falta una cuenta de GitHub (es gratis).</p>
+  <div id="giscus" data-repo="{{ .repo }}" data-repo-id="{{ .repoId }}" data-category="{{ .categoria }}"
+    data-category-id="{{ .categoriaId }}" data-term="{{ $.Params.hiloComentarios | default $.File.ContentBaseName }}"></div>
+</section>
+<script>
+(function () {
+  var caja = document.getElementById("giscus");
+  if (!caja) return;
+  var tema = function () { return document.documentElement.dataset.theme === "dark" ? "dark_dimmed" : "light"; };
+  var d = caja.dataset, s = document.createElement("script");
+  var atributos = {
+    "src": "https://giscus.app/client.js", "data-repo": d.repo, "data-repo-id": d.repoId,
+    "data-category": d.category, "data-category-id": d.categoryId, "data-mapping": "specific",
+    "data-term": d.term, "data-strict": "1", "data-reactions-enabled": "1", "data-emit-metadata": "0",
+    "data-input-position": "top", "data-theme": tema(), "data-lang": "es", "data-loading": "lazy",
+    "crossorigin": "anonymous"
+  };
+  for (var k in atributos) s.setAttribute(k, atributos[k]);
+  s.async = true;
+  caja.appendChild(s);
+  new MutationObserver(function () {
+    var marco = document.querySelector("iframe.giscus-frame");
+    if (marco) marco.contentWindow.postMessage({ giscus: { setConfig: { theme: tema() } } }, "https://giscus.app");
+  }).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+})();
+</script>
+{{- end }}

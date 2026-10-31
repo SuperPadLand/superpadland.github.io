@@ -41,13 +41,36 @@
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, .25);
 }
+/* El logo entero sobre un fondo hecho con el propio logo muy desenfocado:
+   así cada consola toma el color de su logo y nada sale recortado. */
 .consola-card-img {
-    height: 96px;
-    background-size: cover;
-    background-position: center;
-    background-color: var(--code-bg);
-    background-repeat: no-repeat;
+    position: relative;
+    height: 104px;
+    overflow: hidden;
+    background: #fff;
+    isolation: isolate;
 }
+.consola-card-img::before,
+.consola-card-img::after {
+    content: "";
+    position: absolute;
+    background-image: var(--logo);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.consola-card-img::before {
+    inset: -24px;
+    background-size: 100% 100%;
+    filter: blur(22px) saturate(1.3);
+    opacity: .85;
+    z-index: -1;
+}
+.consola-card-img::after {
+    inset: 12px 14px;
+    background-size: contain;
+    transition: transform .2s ease;
+}
+.consola-card:hover .consola-card-img::after { transform: scale(1.06); }
 .consola-card-body {
     padding: 10px 12px;
     display: flex;
@@ -103,3 +126,47 @@
     border-radius: 4px;
     margin: 6px auto;
 }
+
+/* ---------- Cada juego de un top: el buscador enlaza a #puesto-N ---------- */
+.post-content [id^="puesto-"] { scroll-margin-top: 24px; }
+.post-content [id^="puesto-"]:target {
+    background: var(--tertiary);
+    border-radius: var(--radius);
+    margin-inline: -12px;
+    padding: 6px 12px;
+    animation: resaltar 2.4s ease-out 1;
+}
+@keyframes resaltar {
+    0%, 40% { box-shadow: 0 0 0 3px var(--primary); }
+    100%    { box-shadow: 0 0 0 0 transparent; }
+}
+
+/* ---------- Buscador: nombre del juego y, debajo, en qué top está ---------- */
+.searchResults .search-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.searchResults .search-sub { font-size: 13px; font-weight: 400; color: var(--secondary); }
+
+/* ---------- Comentarios ---------- */
+.comentarios {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+}
+.comentarios h2 { font-size: 22px; margin: 0 0 4px; }
+.comentarios-nota { font-size: 14px; color: var(--secondary); margin: 0 0 16px; }
+#giscus { min-height: 140px; }
+
+/* ---------- Página no encontrada ---------- */
+.no-encontrada { text-align: center; padding: 60px 0; }
+.no-encontrada .cifra-404 { font-size: 96px; font-weight: 800; line-height: 1; color: var(--tertiary); margin: 0; }
+.no-encontrada h1 { font-size: 30px; margin: 8px 0 10px; }
+.no-encontrada p { color: var(--secondary); }
+.boton {
+    display: inline-block;
+    margin: 18px 6px 0;
+    padding: 9px 18px;
+    border-radius: var(--radius);
+    background: var(--primary);
+    color: var(--theme);
+    font-weight: 600;
+}
+.boton.secundario { background: var(--entry); color: var(--primary); border: 1px solid var(--border); }
