@@ -1,8 +1,8 @@
 # SuperPadLand
 
 Web de rankings de videojuegos retro, hecha con [Hugo](https://gohugo.io/) y el tema
-[PaperMod](https://github.com/adityatelange/hugo-PaperMod). Antes estaba en
-WordPress.com, que se cerró en octubre de 2026: esta es ahora la única web.
+[PaperMod](https://github.com/adityatelange/hugo-PaperMod). Migrada desde
+WordPress.com.
 
 ## Ver la web en local
 
