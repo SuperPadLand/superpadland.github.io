@@ -77,9 +77,9 @@
                     {{- $destino := .RelPermalink }}
                     {{- range $actual.AllTranslations }}{{ if eq .Language.Lang $l.Lang }}{{ $destino = .RelPermalink }}{{ end }}{{ end }}
                     {{- if eq $l.Lang $actual.Language.Lang }}
-                    <span class="idioma activo" title="{{ $l.Label }}" aria-current="true">{{ upper $l.Lang }}</span>
+                    <span class="idioma activo" title="{{ $l.Label }}" aria-current="true">{{ partial "bandeira.html" $l.Lang }}{{ upper $l.Lang }}</span>
                     {{- else }}
-                    <a class="idioma" href="{{ $destino }}" hreflang="{{ $l.Lang }}" lang="{{ $l.Lang }}" title="{{ $l.Label }}">{{ upper $l.Lang }}</a>
+                    <a class="idioma" href="{{ $destino }}" hreflang="{{ $l.Lang }}" lang="{{ $l.Lang }}" title="{{ $l.Label }}">{{ partial "bandeira.html" $l.Lang }}{{ upper $l.Lang }}</a>
                     {{- end }}
                     {{- end }}
                 </span>
