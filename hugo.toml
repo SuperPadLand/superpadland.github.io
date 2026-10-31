@@ -90,6 +90,8 @@ removePathAccents = true
   disableThemeToggle = false
   DateFormat = "2 de January de 2006"
   comments = true
+  # Imagen que sale al compartir la web en redes (las entradas con portada usan la suya)
+  images = ["/img/superpadland-compartir.png"]
 
   [params.homeInfoParams]
     Title = "SuperPadLand 🕹️"

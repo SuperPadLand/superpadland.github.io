@@ -1,30 +1,18 @@
 {{- define "main" }}
 
 <section class="home-hero">
-  <h1>SuperPadLand <span aria-hidden="true">🕹️</span></h1>
+  <div class="home-hero-marca" aria-hidden="true">{{ partial "cruceta.html" (dict "tam" 64) }}</div>
+  <h1>SuperPadLand</h1>
   <p>Rankings y análisis de los mejores juegos de cada consola retro, probados uno a uno en
      hardware real. Elige tu máquina y descubre lo mejor de su catálogo.</p>
+  <form class="buscador-portada" action="{{ "search/" | absLangURL }}" method="get" role="search">
+    <input type="search" name="q" placeholder="Busca un juego…" aria-label="Buscar un juego" autocomplete="off">
+    <button type="submit">Buscar</button>
+  </form>
 </section>
 
 <h2 class="home-section-title">Explora por consola</h2>
-{{- /* Orden cronológico por generación (de la más antigua a la más nueva) */}}
-{{- $orden := slice "NES" "Master System" "PC Engine" "Mega Drive" "Game Boy" "Super Nintendo" "3DO" "Atari Jaguar" "Saturn" "PlayStation" "Nintendo 64" "Dreamcast" "GameCube" "Xbox" "Wii U" }}
-<nav class="consola-grid">
-  {{- range $name := $orden }}
-    {{- with $.Site.GetPage (printf "/consolas/%s" (urlize $name)) }}
-      {{- $img := "" }}
-      {{- range .Pages }}{{ if and (not $img) .Params.cover.image }}{{ $img = .Params.cover.image }}{{ end }}{{ end }}
-      {{- $n := len .Pages }}
-      <a class="consola-card" href="{{ .RelPermalink }}">
-        <div class="consola-card-img"{{ with $img }} style="--logo:url('{{ . }}')"{{ end }}></div>
-        <div class="consola-card-body">
-          <span class="consola-card-name">{{ .Title }}</span>
-          <span class="consola-card-count">{{ $n }} {{ cond (eq $n 1) "lista" "listas" }}</span>
-        </div>
-      </a>
-    {{- end }}
-  {{- end }}
-</nav>
+{{ partial "rejilla-consolas.html" . }}
 
 <h2 class="home-section-title">Lo último</h2>
 <div class="home-latest">

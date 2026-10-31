@@ -151,6 +151,12 @@ const initSearch = async () => {
         const data = await response.json();
         if (data) {
             fuse = new Fuse(data, buildFuseOptions());
+            // Búsqueda que llega desde la portada: /search/?q=...
+            const q = new URLSearchParams(window.location.search).get('q');
+            if (q) {
+                sInput.value = q;
+                performSearch();
+            }
         }
     } catch (error) {
         console.error(error);

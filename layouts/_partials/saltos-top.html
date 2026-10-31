@@ -1,0 +1,22 @@
+{{- /* Atajos al principio de un top: tramos de puestos y el Top 10 (los tops van del peor al mejor). */ -}}
+{{- $nums := slice -}}
+{{- range findRESubmatch `id="puesto-(\d+)"` .Content }}{{ $nums = $nums | append (int (index . 1)) }}{{ end -}}
+{{- if ge (len $nums) 20 -}}
+  {{- $max := index (sort $nums "value" "desc") 0 -}}
+  {{- $paso := cond (gt $max 200) 100 (cond (gt $max 60) 50 10) -}}
+  {{- $inicios := slice $max -}}
+  {{- $n := div (sub $max 1) $paso -}}
+  {{- range seq $n }}{{ $inicios = $inicios | append (mul (sub (add $n 1) .) $paso) }}{{ end -}}
+  <nav class="saltos" aria-label="Saltar a una parte del top">
+    <span class="saltos-titulo">Saltar a</span>
+    {{- range $i, $s := $inicios }}
+      {{- if gt $s 10 }}
+        {{- $fin := 11 }}
+        {{- if lt (add $i 1) (len $inicios) }}{{ $fin = add (index $inicios (add $i 1)) 1 }}{{ end }}
+        {{- if lt $fin 11 }}{{ $fin = 11 }}{{ end }}
+        <a href="#puesto-{{ $s }}">{{ $s }}{{ if ne $fin $s }}–{{ $fin }}{{ end }}</a>
+      {{- end }}
+    {{- end }}
+    <a class="saltos-top10" href="#puesto-10">Top 10</a>
+  </nav>
+{{- end -}}

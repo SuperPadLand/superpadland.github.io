@@ -25,10 +25,10 @@
                 <img src="{{- site.Params.label.icon | absURL -}}" alt="" aria-label="logo"
                     height="{{- site.Params.label.iconHeight | default "30" -}}">
                 {{- end -}}
-                {{- else if hasPrefix site.Params.label.iconSVG "<svg" }}
-                    {{ site.Params.label.iconSVG | safeHTML }}
+                {{- else }}
+                    {{- partial "cruceta.html" (dict "tam" 30) }}
                 {{- end -}}
-                {{- $label_text -}}
+                <span class="marca">{{- $label_text -}}</span>
             </a>
             {{- end }}
 

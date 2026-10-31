@@ -60,8 +60,9 @@ A los 1-2 minutos los cambios están online.
    <hr/>
    ```
 
-Las consolas nuevas aparecen solas en la página *Consolas*; en la portada hay que añadirlas a
-la lista `$orden` de `layouts/index.html`, en su sitio por orden cronológico.
+Las consolas nuevas hay que añadirlas a la lista `$orden` de
+`layouts/_partials/rejilla-consolas.html`, en su sitio por orden cronológico: de ahí salen la
+cuadrícula de la portada y la de la página *Consolas*.
 
 Si cambias la dirección (`slug`) de una entrada ya publicada, añade la vieja en `aliases`
 para que los enlaces antiguos sigan funcionando.
@@ -79,6 +80,8 @@ una página, pon `comments: false` en su front matter.
 - `layouts/` — plantillas propias: la home con la cuadrícula de consolas, el índice del
   buscador (`index.json`), los comentarios, la página 404 y el pie en castellano.
 - `assets/js/fastsearch.js` — el buscador (muestra en qué top y puesto está cada juego).
-- `assets/css/extended/custom.css` — estilos propios.
+- `assets/css/extended/custom.css` — estilos propios (el morado de la cruceta y la letra pixelada).
+- `static/fuentes/` — la letra pixelada de los títulos (Jersey 15, licencia OFL).
+- `static/img/superpadland-compartir.png` — la imagen que sale al compartir la web en redes.
 - `themes/PaperMod/` — el tema base.
 - `hugo.toml` — la configuración del sitio (menú, taxonomías, etc.).

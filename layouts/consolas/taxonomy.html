@@ -1,0 +1,8 @@
+{{- define "main" }}
+<header class="page-header">
+  {{- partial "breadcrumbs.html" . }}
+  <h1>{{ .Title }}</h1>
+  <div class="post-description">Elige una máquina para ver su ranking y los artículos que hablan de ella.</div>
+</header>
+{{ partial "rejilla-consolas.html" . }}
+{{- end }}

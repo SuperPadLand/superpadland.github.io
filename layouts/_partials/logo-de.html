@@ -1,0 +1,10 @@
+{{- /* Logo de una entrada: su portada o, si no tiene, la del top de su consola. */ -}}
+{{- $url := .Params.cover.image | default "" -}}
+{{- if not $url -}}
+  {{- range first 1 (.GetTerms "consolas") -}}
+    {{- range .Pages -}}
+      {{- if and (not $url) .Params.cover.image }}{{ $url = .Params.cover.image }}{{ end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $url -}}

@@ -1,14 +1,79 @@
-/* ---------- Home: hero ---------- */
+/* ==========================================================================
+   SuperPadLand: estilos propios sobre PaperMod
+   ========================================================================== */
+
+/* ---------- Letra pixelada (Jersey 15, licencia OFL, servida desde la web) ---------- */
+@font-face {
+    font-family: "Jersey 15";
+    src: url("/fuentes/jersey-15.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ---------- Colores de la marca: el morado de la cruceta ---------- */
+:root {
+    --letra-pixel: "Jersey 15", system-ui, sans-serif;
+    --acento: #5b4cdb;
+    --acento-texto: #4a3bc6;
+    --acento-suave: rgba(91, 76, 219, .10);
+    --acento-borde: rgba(91, 76, 219, .38);
+    --sobre-acento: #fff;
+}
+:root[data-theme="dark"] {
+    --acento: #7466f2;
+    --acento-texto: #aaa1ff;
+    --acento-suave: rgba(116, 102, 242, .15);
+    --acento-borde: rgba(116, 102, 242, .50);
+}
+::selection { background: var(--acento-borde); }
+
+/* ---------- Encabezado ---------- */
+.logo a .marca {
+    font-family: var(--letra-pixel);
+    font-weight: 400;
+    font-size: 32px;
+    letter-spacing: .02em;
+}
+.logo a .cruceta { border-radius: 7px; flex: none; }
+#menu a:hover { color: var(--acento-texto); }
+#menu .active { border-bottom-color: var(--acento); }
+
+/* ---------- Títulos en letra pixelada ---------- */
+.home-hero h1,
+.home-section-title,
+.page-header h1,
+.post-title,
+.archive-year-header,
+.comentarios h2,
+.no-encontrada .cifra-404 {
+    font-family: var(--letra-pixel);
+    font-weight: 400;
+    letter-spacing: .015em;
+}
+.post-title { font-size: 46px; line-height: 1.05; }
+.page-header h1 { font-size: 46px; line-height: 1.05; }
+.archive-year-header { font-size: 34px; }
+
+/* ---------- Portada: cabecera ---------- */
 .home-hero {
     text-align: center;
-    padding: 40px 0 28px;
+    padding: 44px 16px 32px;
+    margin: 8px 0 28px;
+    border-radius: 16px;
+    background:
+        radial-gradient(ellipse 70% 90% at 50% 0%, var(--acento-suave), transparent 75%);
     border-bottom: 1px solid var(--border);
-    margin-bottom: 28px;
+}
+.home-hero-marca { display: inline-flex; margin-bottom: 10px; }
+.home-hero-marca .cruceta {
+    border-radius: 16px;
+    box-shadow: 0 8px 28px var(--acento-borde);
 }
 .home-hero h1 {
-    font-size: 44px;
+    font-size: 68px;
     margin: 0 0 10px;
-    line-height: 1.1;
+    line-height: 1.05;
 }
 .home-hero p {
     max-width: 620px;
@@ -17,12 +82,51 @@
     font-size: 17px;
 }
 
+/* Buscador de la portada (lleva a /search/?q=...) */
+.buscador-portada {
+    display: flex;
+    gap: 8px;
+    max-width: 520px;
+    margin: 24px auto 0;
+}
+.buscador-portada input {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 14px;
+    font-size: 16px;
+    color: var(--primary);
+    background: var(--entry);
+    border: 1px solid var(--tertiary);
+    border-radius: var(--radius);
+}
+.buscador-portada input:focus { outline: none; border-color: var(--acento); box-shadow: 0 0 0 3px var(--acento-suave); }
+.buscador-portada button {
+    padding: 10px 18px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--sobre-acento);
+    background: var(--acento);
+    border-radius: var(--radius);
+    cursor: pointer;
+}
+.buscador-portada button:hover { filter: brightness(1.1); }
+
 .home-section-title {
-    font-size: 22px;
-    margin: 34px 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 30px;
+    margin: 36px 0 14px;
+}
+.home-section-title::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background: var(--acento);
+    flex: none;
 }
 
-/* ---------- Home: cuadrícula de consolas ---------- */
+/* ---------- Cuadrícula de consolas (portada y página Consolas) ---------- */
 .consola-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -35,12 +139,14 @@
     overflow: hidden;
     background: var(--entry);
     border: 1px solid var(--border);
-    transition: transform .15s ease, box-shadow .15s ease;
+    transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
 }
 .consola-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, .25);
+    border-color: var(--acento-borde);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, .25);
 }
+
 /* El logo entero sobre un fondo hecho con el propio logo muy desenfocado:
    así cada consola toma el color de su logo y nada sale recortado. */
 .consola-card-img {
@@ -70,7 +176,9 @@
     background-size: contain;
     transition: transform .2s ease;
 }
-.consola-card:hover .consola-card-img::after { transform: scale(1.06); }
+.consola-card:hover .consola-card-img::after,
+.post-entry:hover .entrada-logo::after { transform: scale(1.06); }
+
 .consola-card-body {
     padding: 10px 12px;
     display: flex;
@@ -87,7 +195,7 @@
     color: var(--secondary);
 }
 
-/* ---------- Home: últimas entradas ---------- */
+/* ---------- Portada: lo último ---------- */
 .home-latest {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -98,9 +206,9 @@
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 16px 18px;
-    transition: transform .15s ease;
+    transition: transform .15s ease, border-color .15s ease;
 }
-.latest-entry:hover { transform: translateY(-3px); }
+.latest-entry:hover { transform: translateY(-3px); border-color: var(--acento-borde); }
 .latest-entry h3 {
     margin: 0 0 8px;
     font-size: 17px;
@@ -114,36 +222,110 @@
     color: var(--secondary);
 }
 .latest-tag {
-    background: var(--tertiary);
-    color: var(--primary);
+    background: var(--acento-suave);
+    color: var(--acento-texto);
     padding: 2px 8px;
     border-radius: 4px;
     font-weight: 600;
 }
 
-/* ---------- Imágenes del contenido migrado ---------- */
+/* ---------- Listas de entradas con el logo de su consola ---------- */
+.post-entry { transition: transform .1s, border-color .15s ease; }
+.post-entry:hover { border-color: var(--acento-borde); }
+.post-entry.con-logo {
+    display: grid;
+    grid-template-columns: 168px 1fr;
+    column-gap: 22px;
+    align-items: center;
+}
+.post-entry.con-logo .entrada-logo {
+    grid-row: 1 / span 3;
+    height: 108px;
+    border-radius: 6px;
+}
+.post-entry.con-logo > .entry-header,
+.post-entry.con-logo > .entry-content,
+.post-entry.con-logo > .entry-footer { grid-column: 2; }
+@media (max-width: 600px) {
+    .post-entry.con-logo { grid-template-columns: 1fr; }
+    .post-entry.con-logo .entrada-logo { grid-row: auto; margin-bottom: 14px; }
+    .post-entry.con-logo > .entry-header,
+    .post-entry.con-logo > .entry-content,
+    .post-entry.con-logo > .entry-footer { grid-column: 1; }
+}
+
+/* ---------- Contenido de las entradas ---------- */
 .post-content img {
     border-radius: 4px;
     margin: 6px auto;
 }
+.post-content a {
+    color: var(--acento-texto);
+    box-shadow: 0 1px 0 var(--acento-borde);
+}
+.post-content a:hover { box-shadow: 0 2px 0 var(--acento); }
 
-/* ---------- Cada juego de un top: el buscador enlaza a #puesto-N ---------- */
+/* Atajos al principio de cada top */
+.saltos {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin: 4px 0 28px;
+    padding: 14px 16px;
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+.saltos-titulo {
+    font-family: var(--letra-pixel);
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--secondary);
+    margin-right: 4px;
+}
+.saltos a {
+    padding: 4px 10px;
+    font-size: 14px;
+    font-variant-numeric: tabular-nums;
+    color: var(--primary);
+    background: var(--theme);
+    border: 1px solid var(--tertiary);
+    border-radius: 6px;
+    transition: border-color .15s ease, color .15s ease;
+}
+.saltos a:hover { border-color: var(--acento); color: var(--acento-texto); }
+.saltos a.saltos-top10 {
+    font-weight: 700;
+    color: var(--sobre-acento);
+    background: var(--acento);
+    border-color: var(--acento);
+}
+.saltos a.saltos-top10:hover { color: var(--sobre-acento); filter: brightness(1.1); }
+
+/* Cada juego de un top: el buscador y los atajos enlazan a #puesto-N */
 .post-content [id^="puesto-"] { scroll-margin-top: 24px; }
 .post-content [id^="puesto-"]:target {
-    background: var(--tertiary);
+    background: var(--acento-suave);
     border-radius: var(--radius);
     margin-inline: -12px;
     padding: 6px 12px;
     animation: resaltar 2.4s ease-out 1;
 }
 @keyframes resaltar {
-    0%, 40% { box-shadow: 0 0 0 3px var(--primary); }
+    0%, 40% { box-shadow: 0 0 0 3px var(--acento); }
     100%    { box-shadow: 0 0 0 0 transparent; }
 }
 
 /* ---------- Buscador: nombre del juego y, debajo, en qué top está ---------- */
+#searchInput:focus { border-color: var(--acento); }
+.searchResults li:hover,
+.searchResults li:focus-within { border-color: var(--acento-borde); }
 .searchResults .search-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
 .searchResults .search-sub { font-size: 13px; font-weight: 400; color: var(--secondary); }
+
+/* ---------- Botón de volver arriba ---------- */
+.top-link { background: var(--acento); color: var(--sobre-acento); }
 
 /* ---------- Comentarios ---------- */
 .comentarios {
@@ -151,13 +333,13 @@
     padding-top: 24px;
     border-top: 1px solid var(--border);
 }
-.comentarios h2 { font-size: 22px; margin: 0 0 4px; }
+.comentarios h2 { font-size: 30px; margin: 0 0 4px; }
 .comentarios-nota { font-size: 14px; color: var(--secondary); margin: 0 0 16px; }
 #giscus { min-height: 140px; }
 
 /* ---------- Página no encontrada ---------- */
 .no-encontrada { text-align: center; padding: 60px 0; }
-.no-encontrada .cifra-404 { font-size: 96px; font-weight: 800; line-height: 1; color: var(--tertiary); margin: 0; }
+.no-encontrada .cifra-404 { font-size: 132px; line-height: 1; color: var(--acento); margin: 0; }
 .no-encontrada h1 { font-size: 30px; margin: 8px 0 10px; }
 .no-encontrada p { color: var(--secondary); }
 .boton {
@@ -165,8 +347,16 @@
     margin: 18px 6px 0;
     padding: 9px 18px;
     border-radius: var(--radius);
-    background: var(--primary);
-    color: var(--theme);
+    background: var(--acento);
+    color: var(--sobre-acento);
     font-weight: 600;
 }
 .boton.secundario { background: var(--entry); color: var(--primary); border: 1px solid var(--border); }
+
+/* ---------- Móvil ---------- */
+@media (max-width: 600px) {
+    .home-hero { padding: 32px 12px 26px; }
+    .home-hero h1 { font-size: 52px; }
+    .post-title, .page-header h1 { font-size: 38px; }
+    .logo a .marca { font-size: 28px; }
+}
