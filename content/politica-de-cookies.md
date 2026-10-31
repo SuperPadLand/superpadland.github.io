@@ -8,8 +8,6 @@ hidemeta: true
 comments: false
 ---
 
-> *Plantilla orientativa. Revísala y adáptala a tu situación.*
-
 **SuperPadLand** es un sitio web estático que **no utiliza cookies propias** ni de seguimiento.
 
 El sitio guarda únicamente una preferencia técnica en tu navegador (almacenamiento local) para recordar si prefieres el modo claro u oscuro. Esta información no se comparte con terceros ni permite identificarte.

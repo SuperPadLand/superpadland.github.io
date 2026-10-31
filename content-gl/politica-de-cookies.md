@@ -8,8 +8,6 @@ hidemeta: true
 comments: false
 ---
 
-> *Modelo indicativo. Revísao e adáptao á túa situación.*
-
 **SuperPadLand** é un sitio web estático que **non utiliza cookies propias** nin de seguimento.
 
 O sitio garda unicamente unha preferencia técnica no teu navegador (almacenamento local) para lembrar se prefires o modo claro ou o escuro. Esta información non se comparte con terceiros nin permite identificarte.
