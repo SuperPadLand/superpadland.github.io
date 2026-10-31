@@ -3,21 +3,20 @@
 <section class="home-hero">
   <div class="home-hero-marca" aria-hidden="true">{{ partial "cruceta.html" (dict "tam" 64) }}</div>
   <h1>SuperPadLand</h1>
-  <p>Rankings y análisis de los mejores juegos de cada consola retro, probados uno a uno en
-     hardware real. Elige tu máquina y descubre lo mejor de su catálogo.</p>
+  <p>{{ i18n "lema_portada" }}</p>
   <form class="buscador-portada" action="{{ "search/" | absLangURL }}" method="get" role="search">
-    <input type="search" name="q" placeholder="Busca un juego…" aria-label="Buscar un juego" autocomplete="off">
-    <button type="submit">Buscar</button>
+    <input type="search" name="q" placeholder="{{ i18n "busca_un_juego" }}" aria-label="{{ i18n "buscar_un_juego" }}" autocomplete="off">
+    <button type="submit">{{ i18n "buscar" }}</button>
   </form>
 </section>
 
-<h2 class="home-section-title">Explora por consola</h2>
+<h2 class="home-section-title">{{ i18n "explora_por_consola" }}</h2>
 {{ partial "rejilla-consolas.html" . }}
 
-<h2 class="home-section-title">Chuletas retro</h2>
+<h2 class="home-section-title">{{ i18n "chuletas_retro" }}</h2>
 {{ partial "chuletas.html" (dict) }}
 
-<h2 class="home-section-title">Lo último</h2>
+<h2 class="home-section-title">{{ i18n "lo_ultimo" }}</h2>
 <div class="home-latest">
   {{- $latest := first 6 (where site.RegularPages "Section" "posts") }}
   {{- range $latest }}

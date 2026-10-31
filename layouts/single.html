@@ -34,6 +34,9 @@
   {{- if and (.Param "ShowToc") (not (findRE `id="puesto-` .Content 1)) }}
   {{- partial "toc.html" . }}
   {{- end }}
+  {{- if .Params.pendienteTraducir }}
+  <p class="aviso-traduccion">{{ i18n "aviso_pendiente" }}</p>
+  {{- end }}
   {{- partial "saltos-top.html" . }}
 
   {{- if .Content }}

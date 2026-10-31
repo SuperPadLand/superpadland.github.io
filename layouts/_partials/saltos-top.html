@@ -7,8 +7,8 @@
   {{- $inicios := slice $max -}}
   {{- $n := div (sub $max 1) $paso -}}
   {{- range seq $n }}{{ $inicios = $inicios | append (mul (sub (add $n 1) .) $paso) }}{{ end -}}
-  <nav class="saltos" aria-label="Saltar a una parte del top">
-    <span class="saltos-titulo">Saltar a</span>
+  <nav class="saltos" aria-label="{{ i18n "saltar_a_parte" }}">
+    <span class="saltos-titulo">{{ i18n "saltar_a" }}</span>
     {{- range $i, $s := $inicios }}
       {{- if gt $s 10 }}
         {{- $fin := 11 }}

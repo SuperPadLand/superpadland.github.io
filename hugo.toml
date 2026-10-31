@@ -1,6 +1,7 @@
 baseURL = "https://superpadland.github.io/"
-locale = "es-es"
 defaultContentLanguage = "es"
+# El castellano va en la raíz; el gallego en /gl/
+defaultContentLanguageInSubdir = false
 title = "SuperPadLand"
 theme = "PaperMod"
 
@@ -44,32 +45,86 @@ removePathAccents = true
   [markup.highlight]
     noClasses = false
 
-# --- Menú principal --------------------------------------------------------
-[[menu.main]]
-  identifier = "consolas"
-  name = "Consolas"
-  url = "/consolas/"
-  weight = 10
-[[menu.main]]
-  identifier = "blog"
-  name = "Blog"
-  url = "/blog/"
-  weight = 20
-[[menu.main]]
-  identifier = "chuletas"
-  name = "Chuletas retro"
-  url = "/chuletas-retro/"
-  weight = 30
-[[menu.main]]
-  identifier = "buscar"
-  name = "Buscar"
-  url = "/search/"
-  weight = 40
-[[menu.main]]
-  identifier = "acerca"
-  name = "Acerca de"
-  url = "/acerca-de/"
-  weight = 50
+# --- Idiomas: castellano (raíz) y gallego (/gl/) ---------------------------
+# El contenido gallego está en content-gl/, con las mismas rutas que content/:
+# así cada página sabe cuál es su traducción.
+[module]
+  [[module.mounts]]
+    source = "content"
+    target = "content"
+    sites = { matrix = { languages = ["es"] } }
+  [[module.mounts]]
+    source = "content-gl"
+    target = "content"
+    sites = { matrix = { languages = ["gl"] } }
+
+[languages]
+  [languages.es]
+    weight = 1
+    label = "Castellano"
+    locale = "es-ES"
+    title = "SuperPadLand"
+    [languages.es.params]
+          images = ["/img/superpadland-compartir.png"]
+    [[languages.es.menus.main]]
+      identifier = "consolas"
+      name = "Consolas"
+      url = "/consolas/"
+      weight = 10
+    [[languages.es.menus.main]]
+      identifier = "blog"
+      name = "Blog"
+      url = "/blog/"
+      weight = 20
+    [[languages.es.menus.main]]
+      identifier = "chuletas"
+      name = "Chuletas retro"
+      url = "/chuletas-retro/"
+      weight = 30
+    [[languages.es.menus.main]]
+      identifier = "buscar"
+      name = "Buscar"
+      url = "/search/"
+      weight = 40
+    [[languages.es.menus.main]]
+      identifier = "acerca"
+      name = "Acerca de"
+      url = "/acerca-de/"
+      weight = 50
+
+  [languages.gl]
+    weight = 2
+    label = "Galego"
+    locale = "gl-ES"
+    title = "SuperPadLand"
+    [languages.gl.params]
+      description = "Os mellores rankings de xogos de cada consola retro, probados en hardware real."
+      images = ["/img/superpadland-compartir-gl.png"]
+    [[languages.gl.menus.main]]
+      identifier = "consolas"
+      name = "Consolas"
+      url = "/consolas/"
+      weight = 10
+    [[languages.gl.menus.main]]
+      identifier = "blog"
+      name = "Blog"
+      url = "/blog/"
+      weight = 20
+    [[languages.gl.menus.main]]
+      identifier = "chuletas"
+      name = "Chuletas retro"
+      url = "/chuletas-retro/"
+      weight = 30
+    [[languages.gl.menus.main]]
+      identifier = "buscar"
+      name = "Buscar"
+      url = "/search/"
+      weight = 40
+    [[languages.gl.menus.main]]
+      identifier = "acerca"
+      name = "Acerca de"
+      url = "/acerca-de/"
+      weight = 50
 
 # --- Parámetros del tema PaperMod -----------------------------------------
 [params]
@@ -90,12 +145,7 @@ removePathAccents = true
   disableThemeToggle = false
   DateFormat = "2 de January de 2006"
   comments = true
-  # Imagen que sale al compartir la web en redes (las entradas con portada usan la suya)
-  images = ["/img/superpadland-compartir.png"]
-
-  [params.homeInfoParams]
-    Title = "SuperPadLand 🕹️"
-    Content = "Rankings y análisis de los mejores juegos de cada consola retro, probados uno a uno en hardware real. Elige tu máquina y descubre lo mejor de su catálogo."
+  # La imagen al compartir en redes va en cada idioma (languages.*.params.images)
 
   # La portada solo en listados: dentro de la entrada el logo ya abre el texto
   [params.cover]

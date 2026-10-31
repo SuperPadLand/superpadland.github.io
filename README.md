@@ -83,6 +83,21 @@ chuleta:
 
 Los iconos están en `layouts/_partials/icono-pixel.html`.
 
+## Versión en gallego
+
+La web está en castellano (en la raíz) y en gallego (en `/gl/`). El contenido gallego está en
+`content-gl/`, con **los mismos nombres de fichero** que en `content/`: así cada página sabe
+cuál es su traducción, y el selector **ES · GL** del encabezado lleva de una a otra. Los
+comentarios de las dos versiones de una entrada van al mismo hilo.
+
+- Los textos fijos de las plantillas (botones, avisos, pie…) están en `i18n/es.yaml` e
+  `i18n/gl.yaml`.
+- Las páginas con `url` fija llevan `/gl/` delante en su versión gallega (`url: "/gl/contacto/"`).
+- Un top con la introducción traducida pero las reseñas aún en castellano lleva
+  `pendienteTraducir: true`, que muestra un aviso arriba. Al terminar de traducirlo, se quita.
+- Si una entrada no tiene versión gallega, no sale en `/gl/`, y el selector lleva a la portada
+  gallega.
+
 ## Comentarios
 
 Cada entrada y la página de Contacto tienen comentarios con [giscus](https://giscus.app/):
@@ -91,7 +106,7 @@ una página, pon `comments: false` en su front matter.
 
 ## Estructura
 
-- `content/` — las entradas y páginas (el texto).
+- `content/` — las entradas y páginas en castellano; `content-gl/`, en gallego.
 - `static/img/` — todas las imágenes.
 - `layouts/` — plantillas propias: la home con la cuadrícula de consolas, el índice del
   buscador (`index.json`), los comentarios, la página 404 y el pie en castellano.

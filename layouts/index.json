@@ -5,9 +5,9 @@
     {{- $p := . -}}
     {{- $juegos := findRESubmatch `data-juego="([^"]*)"[^>]*\sid="puesto-(\d+)"` .Content -}}
     {{- if $juegos -}}
-      {{- $indice = $indice | append (dict "title" .Title "permalink" .Permalink "summary" (printf "%d juegos" (len $juegos))) -}}
+      {{- $indice = $indice | append (dict "title" .Title "permalink" .Permalink "summary" (i18n "juegos" (len $juegos))) -}}
       {{- range $juegos -}}
-        {{- $indice = $indice | append (dict "title" (index . 1 | htmlUnescape) "permalink" (printf "%s#puesto-%s" $p.Permalink (index . 2)) "summary" (printf "Puesto %s en el %s" (index . 2) $p.Title)) -}}
+        {{- $indice = $indice | append (dict "title" (index . 1 | htmlUnescape) "permalink" (printf "%s#puesto-%s" $p.Permalink (index . 2)) "summary" (i18n "puesto_en" (dict "Puesto" (index . 2) "Top" $p.Title))) -}}
       {{- end -}}
     {{- else -}}
       {{- $indice = $indice | append (dict "title" .Title "permalink" .Permalink "summary" (.Summary | plainify | htmlUnescape | truncate 140) "content" .Plain) -}}

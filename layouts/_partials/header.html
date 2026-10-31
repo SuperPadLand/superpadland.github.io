@@ -36,7 +36,7 @@
             {{- if $lsenabled }}
             <div class="logo-switches">
                 {{- if (not site.Params.disableThemeToggle) }}
-                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="Modo claro / oscuro (Alt + T)" aria-label="Cambiar entre modo claro y oscuro">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="{{ i18n "modo_claro_oscuro" }} (Alt + T)" aria-label="{{ i18n "cambiar_modo" }}">
                     <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -58,7 +58,7 @@
                 </button>
                 {{- end }}
                 {{- with site.Home.OutputFormats.Get "rss" }}
-                <a class="boton-rss" href="{{ .Permalink }}" title="Suscríbete por RSS" aria-label="Suscribirse por RSS">
+                <a class="boton-rss" href="{{ .Permalink }}" title="{{ i18n "suscribete_rss" }}" aria-label="{{ i18n "suscribete_rss" }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M4 11a9 9 0 0 1 9 9"></path>
@@ -68,7 +68,24 @@
                 </a>
                 {{- end }}
 
-                {{- if (not site.Params.disableLangToggle) }}
+                {{- /* Selector de idioma: lleva a la misma página en el otro idioma o, si no existe, a su portada */}}
+                {{- if hugo.IsMultilingual }}
+                {{- $actual := . }}
+                <span class="idiomas" role="group" aria-label="{{ i18n "idioma" }}">
+                    {{- range site.Home.AllTranslations }}
+                    {{- $l := .Language }}
+                    {{- $destino := .RelPermalink }}
+                    {{- range $actual.AllTranslations }}{{ if eq .Language.Lang $l.Lang }}{{ $destino = .RelPermalink }}{{ end }}{{ end }}
+                    {{- if eq $l.Lang $actual.Language.Lang }}
+                    <span class="idioma activo" title="{{ $l.Label }}" aria-current="true">{{ upper $l.Lang }}</span>
+                    {{- else }}
+                    <a class="idioma" href="{{ $destino }}" hreflang="{{ $l.Lang }}" lang="{{ $l.Lang }}" title="{{ $l.Label }}">{{ upper $l.Lang }}</a>
+                    {{- end }}
+                    {{- end }}
+                </span>
+                {{- end }}
+
+                {{- if and (not site.Params.disableLangToggle) false }}
                     {{- $lang := .Lang}}
                     {{- with site.Home.Translations }}
                     {{- $separator := or $label_text (not site.Params.disableThemeToggle)}}

@@ -1,6 +1,6 @@
 {{- /* Cuadrícula de consolas por orden cronológico (de la más antigua a la más nueva). */ -}}
 {{- $orden := slice "NES" "Master System" "PC Engine" "Mega Drive" "Game Boy" "Super Nintendo" "3DO" "Atari Jaguar" "Saturn" "PlayStation" "Nintendo 64" "Dreamcast" "GameCube" "Xbox" "Wii U" }}
-<nav class="consola-grid" aria-label="Consolas">
+<nav class="consola-grid" aria-label="{{ i18n "consolas" }}">
   {{- range $name := $orden }}
     {{- with site.GetPage (printf "/consolas/%s" (urlize $name)) }}
       {{- $img := "" }}
@@ -10,7 +10,7 @@
         <div class="consola-card-img"{{ with $img }} style="--logo:url('{{ . }}')"{{ end }}></div>
         <div class="consola-card-body">
           <span class="consola-card-name">{{ .Title }}</span>
-          <span class="consola-card-count">{{ $n }} {{ cond (eq $n 1) "entrada" "entradas" }}</span>
+          <span class="consola-card-count">{{ i18n "entradas" $n }}</span>
         </div>
       </a>
     {{- end }}

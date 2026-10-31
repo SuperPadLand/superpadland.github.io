@@ -1,8 +1,8 @@
 {{- define "main" }}
 <div class="no-encontrada">
   <p class="cifra-404">404</p>
-  <h1>Esta página no existe</h1>
-  <p>Puede que la dirección esté mal escrita o que la entrada haya cambiado de sitio.</p>
-  <p><a class="boton" href="{{ "" | absLangURL }}">Ir a la portada</a> <a class="boton secundario" href="{{ "search/" | absLangURL }}">Buscar un juego</a></p>
+  <h1>{{ i18n "pagina_no_existe" }}</h1>
+  <p>{{ i18n "explicacion_404" }}</p>
+  <p><a class="boton" href="{{ "" | absLangURL }}">{{ i18n "ir_a_portada" }}</a> <a class="boton secundario" href="{{ "search/" | absLangURL }}">{{ i18n "buscar_un_juego" }}</a></p>
 </div>
 {{- end }}

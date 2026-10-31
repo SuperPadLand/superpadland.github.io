@@ -8,7 +8,7 @@
 {{- end }}
 
 {{- /* Title */}}
-<title>{{ if .IsHome }}{{ else if eq .Kind "404" }}Página no encontrada | {{ else }}{{ if .Title }}{{ .Title }} | {{ end }}{{ end }}{{ site.Title }}</title>
+<title>{{ if .IsHome }}{{ else if eq .Kind "404" }}{{ i18n "pagina_no_encontrada" }} | {{ else }}{{ if .Title }}{{ .Title }} | {{ end }}{{ end }}{{ site.Title }}</title>
 
 {{- /* Meta */}}
 {{- if .IsHome }}

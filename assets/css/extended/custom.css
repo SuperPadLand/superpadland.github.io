@@ -40,6 +40,28 @@
 .logo-switches { align-items: center; }
 .boton-rss { display: inline-flex; align-items: center; padding: 0 .4rem; color: var(--primary); }
 .boton-rss:hover { color: var(--acento-texto); }
+
+/* Selector de idioma ES · GL */
+.idiomas {
+    display: inline-flex;
+    margin-left: .35rem;
+    border: 1px solid var(--tertiary);
+    border-radius: 6px;
+    overflow: hidden;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1;
+}
+.logo .idiomas .idioma {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--secondary);
+}
+.logo .idiomas a.idioma:hover { color: var(--acento-texto); background: var(--acento-suave); }
+.logo .idiomas .idioma.activo { color: var(--sobre-acento); background: var(--acento); }
 #menu .active { border-bottom-color: var(--acento); }
 
 /* ---------- Títulos en letra pixelada ---------- */
@@ -299,6 +321,17 @@
     box-shadow: 0 1px 0 var(--acento-borde);
 }
 .post-content a:hover { box-shadow: 0 2px 0 var(--acento); }
+
+/* Aviso en los tops que aún no están traducidos del todo */
+.aviso-traduccion {
+    margin: 0 0 18px;
+    padding: 10px 14px;
+    font-size: 15px;
+    color: var(--primary);
+    background: var(--acento-suave);
+    border-left: 3px solid var(--acento);
+    border-radius: 6px;
+}
 
 /* Atajos al principio de cada top */
 .saltos {

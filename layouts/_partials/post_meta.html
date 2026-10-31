@@ -7,7 +7,7 @@
 {{- /* En los tops, el número de juegos en lugar del tiempo de lectura */ -}}
 {{- $juegos := len (findRE `id="puesto-\d+"` .Content) }}
 {{- if gt $juegos 0 -}}
-    {{- $scratch.Add "meta" (slice (printf "<span>%d juegos</span>" $juegos)) }}
+    {{- $scratch.Add "meta" (slice (printf "<span>%s</span>" (i18n "juegos" $juegos))) }}
 {{- else if (.Param "ShowReadingTime") -}}
     {{- $scratch.Add "meta" (slice (printf "<span>%s</span>" (i18n "read_time" .ReadingTime | default (printf "%d min" .ReadingTime)))) }}
 {{- end }}

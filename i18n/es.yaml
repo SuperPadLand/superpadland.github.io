@@ -1,0 +1,65 @@
+# Textos de las plantillas propias (castellano). Los del tema PaperMod están en themes/PaperMod/i18n/es.yaml.
+- id: lema_portada
+  translation: "Rankings y análisis de los mejores juegos de cada consola retro, probados uno a uno en hardware real. Elige tu máquina y descubre lo mejor de su catálogo."
+- id: busca_un_juego
+  translation: "Busca un juego…"
+- id: buscar_un_juego
+  translation: "Buscar un juego"
+- id: buscar
+  translation: "Buscar"
+- id: explora_por_consola
+  translation: "Explora por consola"
+- id: chuletas_retro
+  translation: "Chuletas retro"
+- id: lo_ultimo
+  translation: "Lo último"
+- id: consolas
+  translation: "Consolas"
+- id: entradas
+  translation:
+    one: "{{ .Count }} entrada"
+    other: "{{ .Count }} entradas"
+- id: elige_maquina
+  translation: "Elige una máquina para ver su ranking y los artículos que hablan de ella."
+- id: saltar_a
+  translation: "Saltar a"
+- id: saltar_a_parte
+  translation: "Saltar a una parte del top"
+- id: juegos
+  translation: "{{ .Count }} juegos"
+- id: puesto_en
+  translation: "Puesto {{ .Puesto }} en el {{ .Top }}"
+- id: comentarios
+  translation: "Comentarios"
+- id: nota_comentarios
+  translation: "Para comentar hace falta una cuenta de GitHub (es gratis)."
+- id: hecho_con
+  translation: "Hecho con"
+- id: y
+  translation: "y"
+- id: volver_arriba
+  translation: "Volver arriba"
+- id: modo_claro_oscuro
+  translation: "Modo claro / oscuro"
+- id: cambiar_modo
+  translation: "Cambiar entre modo claro y oscuro"
+- id: suscribete_rss
+  translation: "Suscríbete por RSS"
+- id: idioma
+  translation: "Idioma"
+- id: pagina_no_encontrada
+  translation: "Página no encontrada"
+- id: pagina_no_existe
+  translation: "Esta página no existe"
+- id: explicacion_404
+  translation: "Puede que la dirección esté mal escrita o que la entrada haya cambiado de sitio."
+- id: ir_a_portada
+  translation: "Ir a la portada"
+- id: rss_portada
+  translation: "Lo último de {{ .Sitio }}: rankings y chuletas de juegos retro"
+- id: rss_seccion
+  translation: "Lo último sobre {{ .Seccion }} en {{ .Sitio }}"
+- id: en
+  translation: "en"
+- id: aviso_pendiente
+  translation: ""
