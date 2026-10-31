@@ -1,8 +1,8 @@
 # SuperPadLand
 
 Web de rankings de videojuegos retro, hecha con [Hugo](https://gohugo.io/) y el tema
-[PaperMod](https://github.com/adityatelange/hugo-PaperMod). Migrada desde
-`superpadland.wordpress.com`.
+[PaperMod](https://github.com/adityatelange/hugo-PaperMod). Antes estaba en
+WordPress.com, que se cerró en octubre de 2026: esta es ahora la única web.
 
 ## Ver la web en local
 
@@ -62,5 +62,3 @@ Las consolas nuevas aparecen solas en la página *Consolas* y en la home.
 - `assets/css/extended/custom.css` — estilos propios.
 - `themes/PaperMod/` — el tema base.
 - `hugo.toml` — la configuración del sitio (menú, taxonomías, etc.).
-- `_migration/` — los scripts que se usaron para traer el contenido de WordPress
-  (no afectan a la web; se pueden borrar).
