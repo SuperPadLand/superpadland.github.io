@@ -195,6 +195,38 @@
     color: var(--secondary);
 }
 
+/* ---------- Chuletas retro (portada y su página) ---------- */
+.chuletas {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 14px;
+}
+.chuleta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: transform .15s ease, border-color .15s ease;
+}
+.chuleta:hover { transform: translateY(-3px); border-color: var(--acento-borde); }
+.chuleta-icono {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 10px;
+    color: var(--acento);
+    background: var(--acento-suave);
+}
+.chuleta-icono .icono-pixel { width: 30px; height: 30px; }
+.chuleta-texto { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.chuleta-titulo { font-weight: 700; font-size: 17px; color: var(--primary); line-height: 1.25; }
+.chuleta-frase { font-size: 14px; color: var(--secondary); line-height: 1.4; }
+
 /* ---------- Portada: lo último ---------- */
 .home-latest {
     display: grid;

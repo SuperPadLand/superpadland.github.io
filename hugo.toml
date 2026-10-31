@@ -56,9 +56,9 @@ removePathAccents = true
   url = "/blog/"
   weight = 20
 [[menu.main]]
-  identifier = "articulos"
-  name = "Artículos"
-  url = "/categories/articulos/"
+  identifier = "chuletas"
+  name = "Chuletas retro"
+  url = "/chuletas-retro/"
   weight = 30
 [[menu.main]]
   identifier = "buscar"

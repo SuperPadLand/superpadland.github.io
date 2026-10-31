@@ -40,6 +40,7 @@ content:
         options:
           multiple: true
           values: [Rankings, Artículos, Noticias]
+        description: 'Las entradas de «Artículos» salen en Chuletas retro (portada y menú).'
 
       - name: consolas
         label: Consola
@@ -83,6 +84,27 @@ content:
             type: boolean
             default: false
             hidden: true
+
+      - name: description
+        label: Descripción
+        type: string
+        description: 'Una o dos frases sobre la entrada. Es lo que enseña Google debajo del título.'
+
+      - name: chuleta
+        label: Tarjeta de Chuletas retro (solo para Artículos)
+        type: object
+        fields:
+          - name: titulo
+            label: Título corto
+            type: string
+          - name: frase
+            label: Frase corta
+            type: string
+          - name: icono
+            label: Icono
+            type: select
+            options:
+              values: [rayo, pantalla, candado, balanza, hoja]
 
       - name: tags
         label: Etiquetas

@@ -14,6 +14,9 @@
 <h2 class="home-section-title">Explora por consola</h2>
 {{ partial "rejilla-consolas.html" . }}
 
+<h2 class="home-section-title">Chuletas retro</h2>
+{{ partial "chuletas.html" (dict) }}
+
 <h2 class="home-section-title">Lo último</h2>
 <div class="home-latest">
   {{- $latest := first 6 (where site.RegularPages "Section" "posts") }}

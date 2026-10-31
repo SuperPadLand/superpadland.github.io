@@ -67,6 +67,22 @@ cuadrícula de la portada y la de la página *Consolas*.
 Si cambias la dirección (`slug`) de una entrada ya publicada, añade la vieja en `aliases`
 para que los enlaces antiguos sigan funcionando.
 
+## Chuletas retro
+
+Las entradas con `categories: ["Artículos"]` salen solas en el apartado *Chuletas retro* de la
+portada y en su página (`/chuletas-retro/`), de la más nueva a la más antigua. Para que la
+tarjeta quede bien, añade al front matter:
+
+```yaml
+description: "Una o dos frases: es lo que enseña Google debajo del título."
+chuleta:
+  titulo: "Título corto"
+  frase: "Frase corta para la portada"
+  icono: rayo   # rayo, pantalla, candado, balanza u hoja
+```
+
+Los iconos están en `layouts/_partials/icono-pixel.html`.
+
 ## Comentarios
 
 Cada entrada y la página de Contacto tienen comentarios con [giscus](https://giscus.app/):

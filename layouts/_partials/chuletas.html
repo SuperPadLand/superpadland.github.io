@@ -1,0 +1,16 @@
+{{- /* Tarjetas de «Chuletas retro»: todas las entradas de la categoría Artículos, de la más nueva a la más antigua.
+       Con (dict "larga" true) enseñan la descripción completa en lugar de la frase corta. */ -}}
+{{- $larga := .larga | default false -}}
+{{- $paginas := where site.RegularPages "Params.categories" "intersect" (slice "Artículos") -}}
+<div class="chuletas">
+  {{- range $paginas.ByDate.Reverse }}
+  {{- $c := .Params.chuleta | default dict }}
+  <a class="chuleta" href="{{ .RelPermalink }}">
+    <span class="chuleta-icono">{{ partial "icono-pixel.html" ($c.icono | default "hoja") }}</span>
+    <span class="chuleta-texto">
+      <span class="chuleta-titulo">{{ $c.titulo | default .Title }}</span>
+      <span class="chuleta-frase">{{ if $larga }}{{ .Description | default $c.frase }}{{ else }}{{ $c.frase | default .Description | default (.Summary | plainify | truncate 90) }}{{ end }}</span>
+    </span>
+  </a>
+  {{- end }}
+</div>
